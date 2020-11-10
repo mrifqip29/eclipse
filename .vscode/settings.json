@@ -1,0 +1,17 @@
+{
+    "eslint.packageManager": "yarn",
+    "eslint.quiet": true,
+    "eslint.options": {},
+    "vetur.format.defaultFormatterOptions": {
+        "prettier": {},
+        "js-beautify-html": {
+            "wrap_attributes": "force-expand-multiline"
+        },
+        "prettyhtml": {
+            "printWidth": 100,
+            "singleQuote": false,
+            "wrapAttributes": false,
+            "sortAttributes": false
+        }
+    }
+}
