@@ -1,86 +1,90 @@
 <template>
-  <v-app>
-    <!-- NAVBAR -->
-    <v-navigation-drawer
-      v-model="drawer"
-      widt="200"
-      height="100vh"
-      :clipped="clipped"
-      fixed
-      temporary
-      app
-      light
-    >
-      <v-list two-line>
-        <v-list-item
-          active-class="tabred"
-          :ripple="{ class: 'orange--text' }"
-          v-for="(item, i) in items"
-          :to="item.to"
-          :key="i"
-          router
-          nuxt
-          exact
-        >
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" class="title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
-    <!-- TOOLBAR -->
-    <v-app-bar
-      dark
-      app
-      scroll-off-screen
-      color="black"
-      clipped-left
-      fixed
-      height="72"
-    >
-      <v-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"
-        >mdi-view-headline</v-icon
+  <div>
+    <v-app>
+      <!-- NAVBAR -->
+      <v-navigation-drawer
+        v-model="drawer"
+        widt="200"
+        height="100vh"
+        :clipped="clipped"
+        fixed
+        temporary
+        app
+        light
       >
-      <nuxt-link to="/">
+        <v-list two-line>
+          <v-list-item
+            active-class="tabred"
+            :ripple="{ class: 'orange--text' }"
+            v-for="(item, i) in items"
+            :to="item.to"
+            :key="i"
+            router
+            nuxt
+            exact
+          >
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title" class="title" />
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+
+      <!-- TOOLBAR -->
+      <v-app-bar
+        dark
+        app
+        scroll-off-screen
+        color="black"
+        clipped-left
+        fixed
+        height="72"
+      >
+        <v-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"
+          >mdi-view-headline</v-icon
+        >
+        <nuxt-link to="/">
+          <img
+            src="~assets/images/logo-eclipse-white-tnp.png"
+            alt="eclipse"
+            class="nav__logo hidden-sm-and-down"
+          />
+        </nuxt-link>
+        <v-spacer></v-spacer>
         <img
           src="~assets/images/logo-eclipse-white-tnp.png"
           alt="eclipse"
-          class="nav__logo hidden-sm-and-down"
+          class="nav__logo--small hidden-md-and-up"
         />
-      </nuxt-link>
-      <v-spacer></v-spacer>
-      <img
-        src="~assets/images/logo-eclipse-white-tnp.png"
-        alt="eclipse"
-        class="nav__logo--small hidden-md-and-up"
-      />
-      <v-toolbar-items
-        class="hidden-sm-and-down"
-        v-for="(item, i) in items"
-        :key="i"
-      >
-        <v-btn
-          exact-active-class="tabred"
-          active-class="tabred"
-          text
-          :to="item.to"
-          exact
-          nuxt
-          :ripple="{ class: 'orange--text' }"
+        <v-toolbar-items
+          class="hidden-sm-and-down"
+          v-for="(item, i) in items"
+          :key="i"
         >
-          {{ item.title }}
-        </v-btn>
-      </v-toolbar-items>
-    </v-app-bar>
+          <v-btn
+            exact-active-class="tabred"
+            active-class="tabred"
+            text
+            :to="item.to"
+            exact
+            nuxt
+            :ripple="{ class: 'orange--text' }"
+          >
+            {{ item.title }}
+          </v-btn>
+        </v-toolbar-items>
+      </v-app-bar>
 
-    <!-- FOOTER -->
-    <v-footer :absolute="!fixed" app>
-      <v-layout justify-center row wrap>
-        <span>Copyright &copy; 2021 Eclipse</span>
-      </v-layout>
-    </v-footer>
-  </v-app>
+      <Nuxt />
+
+      <!-- FOOTER -->
+      <v-footer :absolute="!fixed" app dark>
+        <v-layout justify-center row wrap>
+          <span>Copyright &copy; 2021 Eclipse</span>
+        </v-layout>
+      </v-footer>
+    </v-app>
+  </div>
 </template>
 
 <script>
