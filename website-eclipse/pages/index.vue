@@ -1,20 +1,45 @@
 <template light>
   <div>
-    <!-- LOGO ECLIPSE -->
-    <section class="hero">
-      <div class="hero__text">
-        <!-- <h1 class="black--text text-xs-center display-2 font-weight-bold">
-          test
-        </h1> -->
-        <v-img
+    <body class="body">
+      <!-- LOGO ECLIPSE -->
+      <section class="hero">
+        <img
           src="~assets/images/logo-eclipse-white-tnp.png"
-          lazy-src="~assets/images/logo-eclipse-white-tnp.png"
-          contain
-        >
-        </v-img>
-      </div>
-      <div class="arrow" @click="$vuetify.goTo(target, options)"></div>
-    </section>
+          class="hero__img"
+        />
+        <h1 class="white--text text-xs-center text-h1 hero__text">
+          Ilmu Komputer 54
+        </h1>
+      </section>
+
+      <!-- ISI -->
+      <v-container mt-10 mb-15 col-12>
+        <v-layout row align-center justify-center fill-height wrap>
+          <v-flex xs12 lg5>
+            <p class="text-h1 text-center font-weight-medium mb-10 welcome">
+              Selamat Datang di Wesbite Eclipse
+            </p>
+          </v-flex>
+        </v-layout>
+        <!-- COUNTER JUMLAH MAHASISWA -->
+        <v-layout row align-center justify-center fill-height wrap mt-5>
+          <v-flex xs12 lg5>
+            <div class="text-h1 text-center font-weight-medium mb-5">
+              <number
+                class="bold transition"
+                ref="number1"
+                :class="{ scaleBig: scaleClass }"
+                :from="numberFrom"
+                :to="numberTo"
+                :duration="duration"
+                easing="Power1.easeOut"
+              />
+            </div>
+            <p class="text-h3 text-center">Mahasiswa</p>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </body>
   </div>
 </template>
 
@@ -25,33 +50,43 @@ export default {
   components: {
     EclipseLogo,
   },
+  data() {
+    return {
+      numberFrom: 0,
+      numberTo: 96,
+      duration: 2,
+      scaleClass: false,
+    };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .hero {
-  //background-image: url("~assets/images/logo-eclipse-black-tnp.png");
   background-color: #1c1c1c;
   background-size: cover;
   background-position: 30% 0;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
-  height: calc(40vh - 50px);
+  margin-top: 60px;
+  border: 175px;
+  height: calc(100vh - 50px);
   justify-content: center;
   align-items: center;
   &__text {
+    max-height: 300px;
     display: flex;
     height: inherit;
     align-items: center;
+    //font-family: "Nunito" !important;
   }
-}
-.arrow {
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyICBsMTg5Ljk5OS0xOTBjMjAuMTc4LTIwLjE3OCw1My4xNjQtMTkuOTEzLDczLjY3MiwwLjU5NWwwLDBjMjAuNTA4LDIwLjUwOSwyMC43NzIsNTMuNDkyLDAuNTk1LDczLjY3MUwyOTMuNzUxLDQ1NS44Njh6Ii8+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjIwLjI0OSw0NTUuODY4YzIwLjE4LDIwLjE3OSw1My4xNjQsMTkuOTEzLDczLjY3Mi0wLjU5NWwwLDBjMjAuNTA5LTIwLjUwOCwyMC43NzQtNTMuNDkzLDAuNTk2LTczLjY3MiAgbC0xOTAtMTkwYy0yMC4xNzgtMjAuMTc4LTUzLjE2NC0xOS45MTMtNzMuNjcxLDAuNTk1bDAsMGMtMjAuNTA4LDIwLjUwOS0yMC43NzIsNTMuNDkyLTAuNTk1LDczLjY3MUwyMjAuMjQ5LDQ1NS44Njh6Ii8+DQo8L3N2Zz4=);
-  background-size: contain;
-  padding-bottom: 50px;
+  &__img {
+    display: flex;
+    height: 50vh;
+    align-items: center;
+  }
+  .welcome {
+    width: 50vw;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app>
+    <v-app class="layout">
       <!-- NAVBAR -->
       <v-navigation-drawer
         v-model="drawer"
@@ -133,6 +133,9 @@ export default {
 </script>
 
 <style lang="scss">
+.layout {
+  font-family: "Montserrat";
+}
 .nav__logo {
   margin-top: 6px;
   height: 62px;
