@@ -6,4 +6,4 @@ Website Ilmu Komputer IPB 54
 - yarn global add @vue/cli or npm install -g @vue/cli
 
 ## How to run
-- yarn dev or npm dev i guess
+- yarn dev or npm run dev
